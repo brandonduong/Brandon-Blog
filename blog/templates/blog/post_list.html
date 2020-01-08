@@ -1,45 +1,13 @@
-{% load static %}
+  {% extends 'blog/base.html' %}
 
-<html>
-  <head>
-    <title>Brandon's Beautiful Blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  </head>
-
-  <body>
-    <div>
-      <h1>
-        <a href="https://github.com/brandonduong">Brandon Duong</a>
-      </h1>
-    </div>
-
-    <div>
-      <h2>Reasons Why Brandon Duong Is (VERY) Cool:</h2>
-        <ul>
-          <li>He's hot.</li>
-          <li>He's handsome.</li>
-          <li>He's buff.</li>
-          <li>He's masculine.</li>
-          <li>He's intelligent.</li>
-          <li>He's sexy.</li>
-          <li>He's tall.</li>
-          <li>He never lies (especially about himself).</li>
-          <li>And he's got the best girlfriend in the entire galaxy
-            (Also meaning he is the luckiest man in the entire galaxy).</li>
-        </ul>
-    </div>
-
+  {% block content %}
     {% for post in posts %}
-      <div>
-        <h2><a href="">{{ post.title }}</a></h2>
+      <div class="post">
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
         <p>{{ post.text|linebreaksbr }}</p>
-        <p>Published: {{ post.published_date }}</p>
+        <div class="date">
+          <p>published: {{ post.published_date }}</p>
+        </div>
+      </div>
     {% endfor %}
-
-
-
-  </body>
-</html>
+  {% endblock %}
