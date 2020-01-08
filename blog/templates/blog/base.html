@@ -11,8 +11,11 @@
 
   <body>
     <div class="page-header">
+      {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+      {% endif %}
       <h1>
-        <p><a href="https://brandonduongtupy.pythonanywhere.com"</a>Brandon Duong:
+        <p><a href="https://brandonduongtupy.pythonanywhere.com" title="The Greatest Brandon to Ever Exist."</a>Brandon Duong:
           <a href="https://github.com/brandonduong" title="The Greatest Github to Ever Exist.">
           Github</a></p>
       </h1>
